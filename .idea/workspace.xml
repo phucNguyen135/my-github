@@ -10,11 +10,32 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03475da7-a668-482c-8226-cd207ccf45da" name="Default Changelist" comment="" />
+    <list default="true" id="03475da7-a668-482c-8226-cd207ccf45da" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/App/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/actions/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/configureStore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/enhancers/monitorReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/middleware/logger.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/repo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
@@ -33,6 +54,14 @@
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/../../nodeModules/node_modules/prettier" />
+    <property name="run.prettier.on.save" value="true" />
+    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/redux" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -43,6 +72,8 @@
       <option name="presentableId" value="Default" />
       <updated>1598344784677</updated>
       <workItem from="1598344786472" duration="771000" />
+      <workItem from="1598347132306" duration="1041000" />
+      <workItem from="1598361951866" duration="5601000" />
     </task>
     <servers />
   </component>
@@ -59,15 +90,24 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-116" y="-789" key="Vcs.Push.Dialog.v2" timestamp="1598345102459">
+    <state x="-207" y="-890" key="SettingsEditor" timestamp="1598363516862">
       <screen x="-319" y="-1057" width="1920" height="1057" />
     </state>
-    <state x="-116" y="-789" key="Vcs.Push.Dialog.v2/0.23.1280.777/-319.-1057.1920.1057@-319.-1057.1920.1057" timestamp="1598345102459" />
+    <state x="-207" y="-890" key="SettingsEditor/0.23.1280.777/-319.-1057.1920.1057@-319.-1057.1920.1057" timestamp="1598363516862" />
+    <state x="-116" y="-789" key="Vcs.Push.Dialog.v2" timestamp="1598347386941">
+      <screen x="-319" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-116" y="-789" key="Vcs.Push.Dialog.v2/0.23.1280.777/-319.-1057.1920.1057@-319.-1057.1920.1057" timestamp="1598347386941" />
     <state x="97" y="-608" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598345005693">
       <screen x="-319" y="-1057" width="1920" height="1057" />
     </state>
     <state x="97" y="-608" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.777/-319.-1057.1920.1057@-319.-1057.1920.1057" timestamp="1598345005693" />
+    <state x="-51" y="-822" width="670" height="676" key="search.everywhere.popup" timestamp="1598363490244">
+      <screen x="-319" y="-1057" width="1920" height="1057" />
+    </state>
+    <state x="-51" y="-822" width="670" height="676" key="search.everywhere.popup/0.23.1280.777/-319.-1057.1920.1057@-319.-1057.1920.1057" timestamp="1598363490244" />
   </component>
 </project>
