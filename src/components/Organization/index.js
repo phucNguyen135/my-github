@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { connect } from "react-redux";
-import { Card, Header, Grid } from "semantic-ui-react";
+import { Card, Grid } from "semantic-ui-react";
 
 const ListRepo = (props) => {
   const _handleClick = useCallback(
@@ -30,7 +30,6 @@ const ListRepo = (props) => {
   if (props.orgs?.length) {
     return (
       <>
-        <Header as="h1">Organizations</Header>
         <Grid relaxed="very" columns={4}>
           {props.orgs.map(_renderItem)}
         </Grid>

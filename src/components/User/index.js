@@ -19,7 +19,7 @@ const SearchUser = (props) => {
   const _renderExtraData = useCallback(
     ({ name, value }) => (
       <Label>
-        {name}: {value || ""}
+        {name}: {value}
       </Label>
     ),
     []
@@ -46,7 +46,9 @@ const SearchUser = (props) => {
           <Item>
             <Item.Image size="small" src={info.avatar_url} />
             <Item.Content>
-              <Item.Header>{info.name || info.login || ""}</Item.Header>
+              <Item.Header>
+                {[info.login, info.name].filter((_) => _).join(" - ")}
+              </Item.Header>
               <Item.Meta>
                 <span>{info.location}</span>
               </Item.Meta>

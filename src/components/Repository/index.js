@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { connect } from "react-redux";
-import { Header, Item, Label } from "semantic-ui-react";
+import { Item, Label } from "semantic-ui-react";
 import { getTimeFormatNormal } from "../../utils";
 
 const ListRepo = (props) => {
@@ -25,13 +25,9 @@ const ListRepo = (props) => {
     ),
     []
   );
+
   if (props.repos?.length) {
-    return (
-      <Item.Group divided>
-        <Header as="h1">Repositories</Header>
-        {props.repos.map(_renderItemRepo)}
-      </Item.Group>
-    );
+    return <Item.Group divided>{props.repos.map(_renderItemRepo)}</Item.Group>;
   }
   return null;
 };
