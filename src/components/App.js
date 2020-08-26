@@ -14,6 +14,7 @@ import {
   Header,
 } from "semantic-ui-react";
 import About from "./About";
+import MyModal from "./Modal";
 
 const App = (props) => {
   const _renderContent = useMemo(() => {
@@ -68,7 +69,10 @@ const App = (props) => {
           <User />
           <Segment>{_renderContent}</Segment>
         </>
-      )) || <About />}
+      )) ||
+        null}
+      <About />
+      <MyModal />
     </Container>
   );
 };

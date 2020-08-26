@@ -1,3 +1,5 @@
+import { actionOpenModal } from "../redux/actions/modal";
+
 let timer;
 export const debounced = (fn, time = 500) => {
   if (timer) {
@@ -9,12 +11,12 @@ export const debounced = (fn, time = 500) => {
   }, time);
 };
 
-export function pickField(o, ...fields) {
-  return fields.reduce((a, x) => {
-    if (o.hasOwnProperty(x)) a[x] = o[x];
-    return a;
-  }, {});
-}
+export const checkRequest = (responseJSON) => {
+  if (responseJSON.errors) {
+    actionOpenModal("Error", responseJSON.message);
+  }
+  return !responseJSON.errors;
+};
 
 export const getTimeFormatNormal = (time = new Date()) => {
   const formatNumber = (value) => `${value}`.replace(/^[0-9]$/, (a) => `0${a}`);
