@@ -6,16 +6,18 @@ import {
   actionSetCurrentUser,
   actionSetLoading,
 } from "../../../redux/actions/github";
+import { useDispatch } from "react-redux";
 
 const SearchResultItem = ({ item }) => {
+  const dispatch = useDispatch();
   const _handleResultSelect = async () => {
     try {
       if (item) {
         actionSetLoading(true);
         await Promise.all([
-          actionSetCurrentUser(item),
-          actionRepoSearch(item.login),
-          actionOrganizationSearch(item.login),
+          dispatch(actionSetCurrentUser(item)),
+          dispatch(actionRepoSearch(item.login)),
+          dispatch(actionOrganizationSearch(item.login)),
         ]);
       }
     } catch (e) {}

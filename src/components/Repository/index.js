@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Item, Label } from "semantic-ui-react";
 import { getTimeFormatNormal } from "../../utils";
 

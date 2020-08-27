@@ -11,12 +11,14 @@ export const debounced = (fn, time = 500) => {
   }, time);
 };
 
-export const checkRequest = (response, responseJSON) => {
+export const checkRequest = (response, responseJSON, dispatch) => {
   const isOk = response.status < 400;
   if (!isOk) {
-    actionOpenModal(
-      "Error",
-      responseJSON.message || "There is something wrong!"
+    dispatch(
+      actionOpenModal(
+        "Error",
+        responseJSON.message || "There is something wrong!"
+      )
     );
   }
   return isOk;

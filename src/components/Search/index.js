@@ -1,11 +1,12 @@
 import React, { useCallback } from "react";
 import { debounced } from "../../utils";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Search } from "semantic-ui-react";
 import { actionUserSearch } from "../../redux/actions/github";
 import SearchResultItem from "./SearchResultItem";
 
 const SearchUser = () => {
+  const dispatch = useDispatch()
   const [isSearching, users] = useSelector((state) => [
     state.github.isSearching,
     state.github.users,
@@ -14,7 +15,7 @@ const SearchUser = () => {
   const _handleSearchText = useCallback((e, data) => {
     if (data.value)
       debounced(async () => {
-        actionUserSearch(data.value);
+        dispatch(actionUserSearch(data.value));
       });
   }, []);
 
