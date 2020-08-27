@@ -4,7 +4,10 @@ import { Item, Label } from "semantic-ui-react";
 import { getTimeFormatNormal } from "../../utils";
 
 const ListRepo = () => {
-  const [repos] = useSelector((state) => [state.github.repos]);
+  const [repos, currentUser] = useSelector((state) => [
+    state.github.repos,
+    state.github.currentUser,
+  ]);
 
   const _renderItemRepo = useCallback(
     (repo) => (
@@ -31,7 +34,12 @@ const ListRepo = () => {
   if (repos?.length) {
     return <Item.Group divided>{repos.map(_renderItemRepo)}</Item.Group>;
   }
-  return null;
+  return (
+    <span>
+      {currentUser?.login || "This user"} doesn’t have any public repositories
+      yet
+    </span>
+  );
 };
 
 export default ListRepo;
