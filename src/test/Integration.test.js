@@ -15,17 +15,13 @@ import { setupServer } from "msw/node";
 import { CONFIG } from "../config";
 import { MOCK_API_TEST } from "./mock";
 
-const server = setupServer(
-  rest.get(`${CONFIG.GITHUB_API}/search/users`, (req, res, ctx) => {
-    return res(ctx.status(500));
-  })
-);
+const server = setupServer();
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-test("search user - get search result - click result - show user preview", async () => {
+test("[MOCK API]search user - get search result - click result - show user preview", async () => {
   const { USER_TEST, USERS } = MOCK_API_TEST;
   server.use(
     rest.get(`${CONFIG.GITHUB_API}/search/users`, (req, res, ctx) => {
@@ -55,5 +51,33 @@ test("search user - get search result - click result - show user preview", async
   );
   expect(utils.getByLabelText("user-preview-url")).toHaveTextContent(
     USER_TEST.html_url
+  );
+});
+
+test("check organization with no data", async () => {
+  const utils = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+  const inputElement = utils.getByLabelText("search-user");
+  fireEvent.change(inputElement, { target: { value: "phucNguyen135" } });
+
+  const searchResultLabel = `search-user-results-phucNguyen135`;
+  await waitFor(() => expect(utils.getByLabelText(searchResultLabel)), {
+    timeout: 10000,
+  });
+  const searchResultElement = utils.getByLabelText(searchResultLabel);
+  fireEvent(searchResultElement, createEvent.click(searchResultElement));
+
+  await waitFor(() => expect(utils.getByLabelText("tab-orgs")), {
+    timeout: 10000,
+  });
+
+  const tabOrgElm = utils.getByLabelText("tab-orgs");
+  fireEvent(tabOrgElm, createEvent.click(tabOrgElm));
+
+  expect(utils.getByLabelText("orgs-no-data")).toHaveTextContent(
+    "phucNguyen135 is not a member of any organizations."
   );
 });
