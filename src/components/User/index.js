@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Item, Segment, Label } from "semantic-ui-react";
+import { Item, Segment, Label, Search } from "semantic-ui-react";
 
 const SearchUser = (props) => {
   const [info, setInfo] = useState(null);
@@ -43,21 +43,31 @@ const SearchUser = (props) => {
     return (
       <Segment>
         <Item.Group>
-          <Item>
-            <Item.Image size="small" src={info.avatar_url} />
+          <Item aria-label="user-preview">
+            <Item.Image
+              size="small"
+              src={info.avatar_url}
+              aria-label="user-preview-img"
+            />
             <Item.Content>
-              <Item.Header>
+              <Item.Header aria-label="user-preview-header">
                 {[info.login, info.name].filter((_) => _).join(" - ")}
               </Item.Header>
               <Item.Meta>
-                <span>{info.location}</span>
+                <span aria-label="user-preview-location">{info.location}</span>
               </Item.Meta>
               <Item.Meta>
-                <a href={info.html_url} target="_blank">
+                <a
+                  href={info.html_url}
+                  target="_blank"
+                  aria-label="user-preview-url"
+                >
                   {info.html_url}
                 </a>
               </Item.Meta>
-              <Item.Description>{info.bio}</Item.Description>
+              <Item.Description aria-label="user-preview-bio">
+                {info.bio}
+              </Item.Description>
               <Item.Extra>{extraData.map(_renderExtraData)}</Item.Extra>
             </Item.Content>
           </Item>

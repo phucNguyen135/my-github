@@ -26,7 +26,7 @@ const SearchResultItem = ({ item }) => {
     <Item
       onClick={_handleResultSelect}
       key={item.id}
-      aria-label="search-user-results"
+      aria-label={`search-user-results-${item.login}`}
     >
       <Item.Image size="tiny" src={item.avatar_url} />
       <Item.Content>

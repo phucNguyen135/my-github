@@ -1,25 +1,24 @@
 import React from "react";
 import {
-  render,
-  fireEvent,
-  waitFor,
-  screen,
   createEvent,
+  fireEvent,
+  render,
+  waitFor,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import App from "./components/App";
-import Search from "./components/Search";
+import App from "../components/App";
+import Search from "../components/Search";
 import { Provider } from "react-redux";
-import store from "./redux/configureStore";
+import store from "../redux/configureStore";
 import {
-  actionUserSearch,
   actionOrganizationSearch,
   actionRepoSearch,
   actionSetCurrentUser,
-} from "./redux/actions/github";
-import SearchResultItem from "./components/Search/SearchResultItem";
+  actionUserSearch,
+} from "../redux/actions/github";
+import SearchResultItem from "../components/Search/SearchResultItem";
 
-jest.mock("./redux/actions/github");
+jest.mock("../redux/actions/github");
 test("search value input", () => {
   const utils = render(
     <Provider store={store}>
@@ -53,7 +52,7 @@ test("call api search repos, orgs after click search result", async () => {
   const utils = render(
     <SearchResultItem item={{ id: 70199220, login: "phucNguyen135" }} />
   );
-  const element = utils.getByLabelText("search-user-results");
+  const element = utils.getByLabelText("search-user-results-phucNguyen135");
   fireEvent(element, createEvent.click(element));
   await waitFor(() =>
     expect(actionOrganizationSearch).toHaveBeenCalledTimes(1)

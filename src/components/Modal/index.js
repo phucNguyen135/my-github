@@ -1,11 +1,11 @@
 import React, { useCallback } from "react";
-import { Button, Modal } from "semantic-ui-react";
+import { Button, Modal, Search } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { actionCloseModal } from "../../redux/actions/modal";
 
 const MyModal = (props) => {
   return (
-    <div>
+    <div aria-label="modal">
       <Modal dimmer="blurring" open={props.open} onClose={actionCloseModal}>
         <Modal.Header>{props.header}</Modal.Header>
         <Modal.Content>{props.message}</Modal.Content>
