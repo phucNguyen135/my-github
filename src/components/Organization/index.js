@@ -37,7 +37,7 @@ const ListRepo = (props) => {
     );
   }
   return (
-    <span>
+    <span aria-label="orgs-no-data">
       {props.currentUser?.login || "This user"} is not a member of any
       organizations.
     </span>
