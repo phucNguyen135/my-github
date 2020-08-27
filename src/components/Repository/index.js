@@ -1,9 +1,11 @@
 import React, { useCallback } from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { Item, Label } from "semantic-ui-react";
 import { getTimeFormatNormal } from "../../utils";
 
-const ListRepo = (props) => {
+const ListRepo = () => {
+  const [repos] = useSelector((state) => [state.github.repos]);
+
   const _renderItemRepo = useCallback(
     (repo) => (
       <Item key={repo.id}>
@@ -26,15 +28,10 @@ const ListRepo = (props) => {
     []
   );
 
-  if (props.repos?.length) {
-    return <Item.Group divided>{props.repos.map(_renderItemRepo)}</Item.Group>;
+  if (repos?.length) {
+    return <Item.Group divided>{repos.map(_renderItemRepo)}</Item.Group>;
   }
   return null;
 };
-const mapStateToProps = (state) => {
-  return {
-    repos: state.github.repos,
-  };
-};
 
-export default connect(mapStateToProps)(ListRepo);
+export default ListRepo;

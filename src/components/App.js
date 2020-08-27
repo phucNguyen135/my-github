@@ -1,49 +1,31 @@
 import React, { useMemo } from "react";
 import Search from "./Search";
-import ListRepo from "./Repository";
-import Organization from "./Organization";
 import User from "./User";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   Container,
+  Header,
+  Image,
   Loader,
-  Tab,
   Menu,
   Segment,
-  Image,
-  Header,
 } from "semantic-ui-react";
 import About from "./About";
 import MyModal from "./Modal";
+import MyTab from "./Tab";
 
-const App = (props) => {
+const App = () => {
+  const [loading, currentUser] = useSelector((state) => [
+    state.github.isLoading,
+    state.github.currentUser,
+  ]);
+
   const _renderContent = useMemo(() => {
-    if (props.loading) {
+    if (loading) {
       return <Loader active inline="centered" />;
     }
-    return (
-      <Tab
-        panes={[
-          {
-            menuItem: "Repositories",
-            render: () => (
-              <Tab.Pane>
-                <ListRepo />
-              </Tab.Pane>
-            ),
-          },
-          {
-            menuItem: "Organizations",
-            render: () => (
-              <Tab.Pane>
-                <Organization />
-              </Tab.Pane>
-            ),
-          },
-        ]}
-      />
-    );
-  }, [props.loading]);
+    return <MyTab />;
+  }, [loading]);
   return (
     <Container>
       <Menu pointing>
@@ -64,7 +46,7 @@ const App = (props) => {
         </Menu.Item>
       </Menu>
 
-      {(props.currentUser && (
+      {(currentUser && (
         <>
           <User />
           <Segment>{_renderContent}</Segment>
@@ -77,11 +59,4 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    loading: state.github.isLoading,
-    currentUser: state.github.currentUser,
-  };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;

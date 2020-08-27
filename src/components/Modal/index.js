@@ -1,14 +1,16 @@
-import React, { useCallback } from "react";
-import { Button, Modal, Search } from "semantic-ui-react";
-import { connect } from "react-redux";
+import React from "react";
+import { Button, Modal } from "semantic-ui-react";
+import { useSelector } from "react-redux";
 import { actionCloseModal } from "../../redux/actions/modal";
 
-const MyModal = (props) => {
+const MyModal = () => {
+  const modal = useSelector((state) => state.modal);
+
   return (
     <div aria-label="modal">
-      <Modal dimmer="blurring" open={props.open} onClose={actionCloseModal}>
-        <Modal.Header>{props.header}</Modal.Header>
-        <Modal.Content>{props.message}</Modal.Content>
+      <Modal dimmer="blurring" open={modal.open} onClose={actionCloseModal}>
+        <Modal.Header>{modal.header}</Modal.Header>
+        <Modal.Content>{modal.message}</Modal.Content>
         <Modal.Actions>
           <Button positive onClick={actionCloseModal}>
             OK
@@ -19,12 +21,4 @@ const MyModal = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    open: state.modal.open,
-    header: state.modal.header,
-    message: state.modal.message,
-  };
-};
-
-export default connect(mapStateToProps)(MyModal);
+export default MyModal;

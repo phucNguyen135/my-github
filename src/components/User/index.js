@@ -1,20 +1,22 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { Item, Segment, Label, Search } from "semantic-ui-react";
+import { useSelector } from "react-redux";
+import { Item, Label, Segment } from "semantic-ui-react";
 
-const SearchUser = (props) => {
+const SearchUser = () => {
+  const [currentUser] = useSelector((state) => [state.github.currentUser]);
+
   const [info, setInfo] = useState(null);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      if (props.user?.url) {
-        const res = await fetch(props.user.url);
+      if (currentUser.url) {
+        const res = await fetch(currentUser.url);
         const resJSON = await res.json();
         setInfo(resJSON);
       }
     };
     fetchUserInfo();
-  }, [props.user]);
+  }, [currentUser]);
 
   const _renderExtraData = useCallback(
     ({ name, value }) => (
@@ -77,10 +79,5 @@ const SearchUser = (props) => {
   }
   return null;
 };
-const mapStateToProps = (state) => {
-  return {
-    user: state.github.currentUser,
-  };
-};
 
-export default connect(mapStateToProps)(SearchUser);
+export default SearchUser;

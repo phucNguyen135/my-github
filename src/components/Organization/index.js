@@ -1,8 +1,13 @@
 import React, { useCallback } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import { Card, Grid } from "semantic-ui-react";
 
-const ListRepo = (props) => {
+const Organizations = () => {
+  const [orgs, currentUser] = useSelector((state) => [
+    state.github.organizations,
+    state.github.currentUser,
+  ]);
+
   const _handleClick = useCallback(
     (link) => async () => {
       const res = await fetch(link);
@@ -27,27 +32,20 @@ const ListRepo = (props) => {
     []
   );
 
-  if (props.orgs?.length) {
+  if (orgs?.length) {
     return (
       <>
         <Grid relaxed="very" columns={4}>
-          {props.orgs.map(_renderItem)}
+          {orgs.map(_renderItem)}
         </Grid>
       </>
     );
   }
   return (
     <span aria-label="orgs-no-data">
-      {props.currentUser?.login || "This user"} is not a member of any
-      organizations.
+      {currentUser?.login || "This user"} is not a member of any organizations.
     </span>
   );
 };
-const mapStateToProps = (state) => {
-  return {
-    orgs: state.github.organizations,
-    currentUser: state.github.currentUser,
-  };
-};
 
-export default connect(mapStateToProps)(ListRepo);
+export default Organizations;
