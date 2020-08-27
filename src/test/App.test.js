@@ -1,24 +1,19 @@
 import React from "react";
-import {
-  createEvent,
-  fireEvent,
-  render,
-  waitFor,
-} from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App from "../components/App";
-import Search from "../components/Search";
 import { Provider } from "react-redux";
 import store from "../redux/configureStore";
-import {
-  actionOrganizationSearch,
-  actionRepoSearch,
-  actionSetCurrentUser,
-  actionUserSearch,
-} from "../redux/actions/github";
-import SearchResultItem from "../components/Search/SearchResultItem";
 
-jest.mock("../redux/actions/github");
+test("input search exist", () => {
+  const utils = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+  expect(utils.getByLabelText("search-user"));
+});
+
 test("search value input", () => {
   const utils = render(
     <Provider store={store}>
@@ -35,28 +30,19 @@ test("search value input", () => {
   expect(inputElement.value).toBe("nguyen");
 });
 
-test("call action user search when input change", async () => {
+test("search user phucNguyen123", async () => {
   const utils = render(
     <Provider store={store}>
-      <Search />
+      <App />
     </Provider>
   );
+  // Type phucNguyen135 in input search
   const inputElement = utils.getByLabelText("search-user");
-  fireEvent.change(inputElement, { target: { value: "nguyen" } });
-  await waitFor(() => expect(actionUserSearch).toHaveBeenCalledTimes(1), {
-    timeout: 1000,
-  });
-});
+  fireEvent.change(inputElement, { target: { value: "phucNguyen135" } });
 
-test("call api search repos, orgs after click search result", async () => {
-  const utils = render(
-    <SearchResultItem item={{ id: 70199220, login: "phucNguyen135" }} />
+  // Check have user phucNguyen135 in search result.
+  await waitFor(
+    () => expect(utils.getByLabelText("search-user-results-phucNguyen135")),
+    { timeout: 10000 }
   );
-  const element = utils.getByLabelText("search-user-results-phucNguyen135");
-  fireEvent(element, createEvent.click(element));
-  await waitFor(() =>
-    expect(actionOrganizationSearch).toHaveBeenCalledTimes(1)
-  );
-  await waitFor(() => expect(actionRepoSearch).toHaveBeenCalledTimes(1));
-  await waitFor(() => expect(actionSetCurrentUser).toHaveBeenCalledTimes(1));
 });

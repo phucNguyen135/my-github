@@ -81,3 +81,24 @@ test("check organization with no data", async () => {
     "phucNguyen135 is not a member of any organizations."
   );
 });
+
+test("check repositories with no data", async () => {
+  const utils = render(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+  const inputElement = utils.getByLabelText("search-user");
+  fireEvent.change(inputElement, { target: { value: "nguyenvunamphuc1" } });
+
+  const searchResultLabel = `search-user-results-nguyenvunamphuc1`;
+  await waitFor(() => expect(utils.getByLabelText(searchResultLabel)), {
+    timeout: 10000,
+  });
+  const searchResultElement = utils.getByLabelText(searchResultLabel);
+  fireEvent(searchResultElement, createEvent.click(searchResultElement));
+
+  expect(utils.getByLabelText("repos-no-data")).toHaveTextContent(
+    "nguyenvunamphuc1 doesn’t have any public repositories yet."
+  );
+});
