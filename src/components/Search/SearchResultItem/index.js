@@ -13,7 +13,7 @@ const SearchResultItem = ({ item }) => {
   const _handleResultSelect = async () => {
     try {
       if (item) {
-        actionSetLoading(true);
+        dispatch(actionSetLoading(true));
         await Promise.all([
           dispatch(actionSetCurrentUser(item)),
           dispatch(actionRepoSearch(item.login)),
@@ -21,7 +21,7 @@ const SearchResultItem = ({ item }) => {
         ]);
       }
     } catch (e) {}
-    actionSetLoading(false);
+    dispatch(actionSetLoading(false));
   };
 
   return (

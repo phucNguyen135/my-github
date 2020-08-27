@@ -35,9 +35,9 @@ const ListRepo = () => {
     return <Item.Group divided>{repos.map(_renderItemRepo)}</Item.Group>;
   }
   return (
-    <span>
+    <span aria-label="repos-no-data">
       {currentUser?.login || "This user"} doesn’t have any public repositories
-      yet
+      yet.
     </span>
   );
 };
