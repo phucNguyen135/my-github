@@ -1,5 +1,38 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Structure
+
+src
+├── components // Define component use for whole project
+| ├── About //Smallest components
+| ├── Modal
+| ├── Organization
+| ├── Repository 
+| ├── Search 
+| ├── Tab 
+| ├── User 
+| └── App.js  
+├── config
+├── redux // redux, action, reducer
+| ├── action
+| | ├── github.js
+| | ├── modal.js
+| ├── reducers
+| | ├── github.js
+| | ├── modal.js
+| | ├── index.js
+| ├── type
+| └── configureStore.js 
+├── test //define some test 
+| ├── App.test.js
+| └── Integration.test.js 
+├── utils // common function
+| └── index.js
+
+## Demo
+
+https://my-github-finder.herokuapp.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
