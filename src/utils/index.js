@@ -11,11 +11,15 @@ export const debounced = (fn, time = 500) => {
   }, time);
 };
 
-export const checkRequest = (responseJSON) => {
-  if (responseJSON.errors) {
-    actionOpenModal("Error", responseJSON.message);
+export const checkRequest = (response, responseJSON) => {
+  const isOk = response.status < 400;
+  if (!isOk) {
+    actionOpenModal(
+      "Error",
+      responseJSON.message || "There is something wrong!"
+    );
   }
-  return !responseJSON.errors;
+  return isOk;
 };
 
 export const getTimeFormatNormal = (time = new Date()) => {
