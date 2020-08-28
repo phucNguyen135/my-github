@@ -70,7 +70,7 @@ test("[MOCK API] check show modal when api limit", async () => {
 
   // Select user
   const searchResultLabel = `search-user-results-${USER_TEST.login}`;
-  await waitFor(() => expect(utils.getByLabelText(searchResultLabel)));
+  await waitFor(() => expect(utils.getByLabelText(searchResultLabel)), OPTION);
   const searchResultElement = utils.getByLabelText(searchResultLabel);
   fireEvent(searchResultElement, createEvent.click(searchResultElement));
 
@@ -83,7 +83,7 @@ test("[MOCK API] check show modal when api limit", async () => {
 
   // Click Ok to close modal
   const btnOk = "modal-button";
-  await waitFor(() => expect(utils.getByLabelText(btnOk)));
+  await waitFor(() => expect(utils.getByLabelText(btnOk)), OPTION);
   const btnElement = utils.getByLabelText(btnOk);
   fireEvent(btnElement, createEvent.click(btnElement));
 
@@ -131,6 +131,28 @@ test("check repositories with data", async () => {
   await waitFor(() => expect(utils.getByLabelText("tab-repos")), OPTION);
   expect(utils.getByLabelText("repos-list-data"));
   expect(utils.getByLabelText("repos-item-my-github"));
+});
+
+test("check organization with data", async () => {
+  const user = "nguyenvunamphuc";
+  const utils = render(<App />);
+
+  // Search user
+  const inputElement = utils.getByLabelText("search-user");
+  fireEvent.change(inputElement, { target: { value: user } });
+
+  // Select user
+  const searchResultLabel = `search-user-results-${user}`;
+  await waitFor(() => expect(utils.getByLabelText(searchResultLabel)), OPTION);
+  const searchResultElement = utils.getByLabelText(searchResultLabel);
+  fireEvent(searchResultElement, createEvent.click(searchResultElement));
+
+  // Check tab Orgs
+  await waitFor(() => expect(utils.getByLabelText("tab-orgs")), OPTION);
+  const tabOrgElm = utils.getByLabelText("tab-orgs");
+  fireEvent(tabOrgElm, createEvent.click(tabOrgElm));
+  expect(utils.getByLabelText("orgs-list-data"));
+  expect(utils.getByLabelText("orgs-item-phucNguyen9661"));
 });
 
 const OPTION = {
