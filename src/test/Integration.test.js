@@ -52,7 +52,7 @@ test("[MOCK API]search user - get search result - click result - show user previ
 });
 
 test("[MOCK API] check show modal when api limit", async () => {
-  const user = "nguyen";
+  const user = "PhucNguyen12038";
   const { USER_TEST, USERS, RES_LIMIT } = MOCK_API_TEST;
   server.use(
     rest.get(`${CONFIG.GITHUB_API}/search/users`, (req, res, ctx) => {
