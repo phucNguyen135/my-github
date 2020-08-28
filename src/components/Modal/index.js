@@ -11,18 +11,19 @@ const MyModal = () => {
   }, []);
 
   return (
-    <Modal dimmer="blurring" open={modal.open} onClose={_onClose}>
-      <div aria-label="modal">
-        <Modal.Header aria-label="modal-header">{modal.header}</Modal.Header>
-        <Modal.Content aria-label="modal-message">
-          {modal.message}
-        </Modal.Content>
-        <Modal.Actions>
-          <Button positive onClick={_onClose} aria-label="modal-button">
-            OK
-          </Button>
-        </Modal.Actions>
-      </div>
+    <Modal
+      dimmer="blurring"
+      open={modal.open}
+      onClose={_onClose}
+      aria-label="modal"
+    >
+      <Modal.Header aria-label="modal-header">{modal.header}</Modal.Header>
+      <Modal.Content aria-label="modal-message">{modal.message}</Modal.Content>
+      <Modal.Actions>
+        <Button positive onClick={_onClose} aria-label="modal-button">
+          OK
+        </Button>
+      </Modal.Actions>
     </Modal>
   );
 };
