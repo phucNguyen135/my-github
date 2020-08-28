@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import Search from "./Search";
-import User from "./User";
+import Search from "../Search";
+import User from "../User";
 import { useSelector } from "react-redux";
 import {
   Container,
@@ -10,11 +10,11 @@ import {
   Menu,
   Segment,
 } from "semantic-ui-react";
-import About from "./About";
-import MyModal from "./Modal";
-import MyTab from "./Tab";
+import About from "../About";
+import MyModal from "../Modal";
+import MyTab from "../Tab";
 
-const App = () => {
+const Index = () => {
   const [loading, currentUser] = useSelector((state) => [
     state.github.isLoading,
     state.github.currentUser,
@@ -59,4 +59,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Index;

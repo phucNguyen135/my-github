@@ -5,13 +5,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 src
 ├── components // Define component use for whole project
 | ├── About //Smallest components
+| ├── App
 | ├── Modal
 | ├── Organization
 | ├── Repository 
 | ├── Search 
 | ├── Tab 
 | ├── User 
-| └── App.js  
+| └── index.js  
 ├── config
 ├── redux // redux, action, reducer
 | ├── action

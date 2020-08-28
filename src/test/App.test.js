@@ -1,25 +1,15 @@
 import React from "react";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import App from "../components/App";
-import { Provider } from "react-redux";
-import store from "../redux/configureStore";
+import App from "../components/index";
 
 test("input search exist", () => {
-  const utils = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  const utils = render(<App />);
   expect(utils.getByLabelText("search-user"));
 });
 
 test("search value input", () => {
-  const utils = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  const utils = render(<App />);
   const inputElement = utils.getByLabelText("search-user");
   fireEvent.change(inputElement, { target: { value: "phucNGuyen" } });
   expect(inputElement.value).toBe("phucNGuyen");
@@ -31,11 +21,7 @@ test("search value input", () => {
 });
 
 test("search user phucNguyen123", async () => {
-  const utils = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  const utils = render(<App />);
   // Type phucNguyen135 in input search
   const inputElement = utils.getByLabelText("search-user");
   fireEvent.change(inputElement, { target: { value: "phucNguyen135" } });
