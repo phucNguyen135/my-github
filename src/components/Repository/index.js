@@ -11,7 +11,11 @@ const ListRepo = () => {
 
   const _renderItemRepo = useCallback(
     (repo) => (
-      <Item key={repo.id}>
+      <Item
+        key={repo.id}
+        aria-label={`repos-item-${repo.name}`}
+        data-testid="repo-item"
+      >
         <Item.Content>
           <Item.Header as="a" href={repo.html_url} target="_blank">
             {repo.name}
@@ -32,7 +36,11 @@ const ListRepo = () => {
   );
 
   if (repos?.length) {
-    return <Item.Group divided>{repos.map(_renderItemRepo)}</Item.Group>;
+    return (
+      <Item.Group divided aria-label="repos-list-data">
+        {repos.map(_renderItemRepo)}
+      </Item.Group>
+    );
   }
   return (
     <span aria-label="repos-no-data">

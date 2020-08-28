@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
-import { Card, Grid } from "semantic-ui-react";
+import { Card, Grid, Item } from "semantic-ui-react";
 
 const Organizations = () => {
   const [orgs, currentUser] = useSelector((state) => [
@@ -19,7 +19,11 @@ const Organizations = () => {
 
   const _renderItem = useCallback(
     (org) => (
-      <Grid.Column key={org.id}>
+      <Grid.Column
+        key={org.id}
+        aria-label={`orgs-item-${org.login}`}
+        data-testid="org-item"
+      >
         <Card
           onClick={_handleClick(org.url)}
           image={org.avatar_url}
@@ -34,11 +38,9 @@ const Organizations = () => {
 
   if (orgs?.length) {
     return (
-      <>
-        <Grid relaxed="very" columns={4}>
-          {orgs.map(_renderItem)}
-        </Grid>
-      </>
+      <Grid relaxed="very" columns={4} aria-label="orgs-list-data">
+        {orgs.map(_renderItem)}
+      </Grid>
     );
   }
   return (

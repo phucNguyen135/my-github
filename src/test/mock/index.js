@@ -58,4 +58,9 @@ const USERS = {
 export const MOCK_API_TEST = {
   USERS,
   USER_TEST: USERS.items[0],
+  RES_LIMIT: {
+    documentation_url: "https://developer.github.com/v3/#rate-limiting",
+    message:
+      "API rate limit exceeded for 112.197.193.119. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)",
+  },
 };
